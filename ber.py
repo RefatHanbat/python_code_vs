@@ -4,6 +4,10 @@ import matplotlib.pyplot as plt
 
 N = 20000
 
+seed_seq = np.random.randint(0, N)
+
+rng = np.random.default_rng(seed=seed_seq)
+
 ip = np.random.rand(N) > 0.5
 
 ip = ip.astype(int)
@@ -30,15 +34,11 @@ def design_precoder(Ns,optimal_Q,V,check_csit):
           ])
     elif(type=="svd"):
 
-        Ns = len(optimal_Q)
+        Ns = np.count_nonzero(np.diag(optimal_Q))
 
-        q_values = np.array(list(optimal_Q.values()))
+        Q_matrix = np.sqrt(optimal_Q)
 
-        q_sqrt = np.sqrt(q_values)
-
-        q_sqrt = np.pad(q_sqrt, (0, nTx - len(q_sqrt)))
-
-        Q_matrix = np.diag(q_sqrt)
+        
 
         P = V[:,0:Ns] @ Q_matrix[0:Ns,0:Ns]
 
@@ -48,7 +48,7 @@ def design_precoder(Ns,optimal_Q,V,check_csit):
 
 
 
-def findOptimalQ(noise_variance,S):
+def findOptimalQ_origin(noise_variance,S):
 
     max_length_q_values = {}
 
@@ -91,8 +91,53 @@ def findOptimalQ(noise_variance,S):
 
     return max_length_q_values
 
+
+def findOptimalQ(No_var, S):
+
+    Ns = min(nTx, nRx)
+
+    S_mtr = np.diag(S)
+
+    Q_mtr_opt = np.zeros((Ns, Ns), dtype=np.float32)
+
+    C_opt = 0
+
+    # loop for Ns number of stream
+    for ind1 in range(0, Ns):
+        flag_some_q_neg = 0
+        Q_mtr_temp = np.zeros((Ns, Ns), dtype=np.float32)
+        Ns_temp = ind1 + 1
+        C_temp = 0
+        sum_temp = 0
+
+        # loop for ind2 is double than when ind1
+        for ind2 in range(0, Ns_temp):
+            sum_temp = sum_temp + No_var / S_mtr[ind2][ind2]
+
+        # Getting Mu values
+        mu_temp = (1 / Ns_temp) * (Es + sum_temp)
+
+        for ind2 in range(0, Ns_temp):
+            Q_mtr_temp[ind2][ind2] = mu_temp - No_var / S_mtr[ind2][ind2]
+
+            if Q_mtr_temp[ind2][ind2] < 0:
+                flag_some_q_neg = 1
+                break
+
+        if flag_some_q_neg != 1:
+            for ind2 in range(0, Ns_temp):
+                C_temp = C_temp + np.log2(1 + (1 / No_var) * (S_mtr[ind2][ind2] ** 2) * Q_mtr_temp[ind2][ind2])
+
+            if C_temp > C_opt:
+                Q_mtr_opt = np.copy(Q_mtr_temp)
+                Ns_opt = np.copy(Ns_temp)
+                C_opt = np.copy(C_temp)
+                
+    return Q_mtr_opt
+
 def Rx_svd(type):
 
+    print(f"Progress: Completed simulation for {type} equalization")
     equalization_name = type
 
     nErr = []
@@ -113,13 +158,13 @@ def Rx_svd(type):
 
         while ii < len(s):
 
-            H = (1/np.sqrt(2)) * (np.random.randn(nRx, nTx) + 1j * np.random.randn(nRx, nTx))
+            H = rng.normal(loc=0, scale=np.sqrt(1/2), size=(nTx, nRx)) + 1j * rng.normal(loc=0, scale=np.sqrt(1/2), size=(nTx, nRx))
 
             H_hermitian = np.conjugate(H)
 
             H_hermitian = np.transpose(H_hermitian)
 
-            U, S, Vh = np.linalg.svd(H, full_matrices=False)
+            U, S, Vh = np.linalg.svd(H, full_matrices=True)
 
             V = np.conjugate(Vh)
 

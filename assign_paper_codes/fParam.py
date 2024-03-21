@@ -18,7 +18,7 @@ def myf_sys_param():
 
     sys_param["P_S_dBm"] = 23
 
-    sys_param["P_S"] = 10 **(sys_param["P_S_dBm"]/10) / 10 **3
+    sys_param["P_S"] = 10 **(sys_param["P_S_dBm"]/10) / (10**3)
 
     sys_param["P_D_bar_dBm"] = 23
 

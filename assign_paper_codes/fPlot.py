@@ -64,6 +64,7 @@ def myf_plot_locations(sys_param, locations):
  
 def myf_plot_r_C_R(sys_param,x_axis_variables,r_C_R,r_P_R,r_P_D,x_axis_variables_label):
 
+
     fig, axes = plt.subplots(1,1)
 
     axes.plot(x_axis_variables,r_C_R[0],'b*-', markersize=12,
@@ -82,27 +83,27 @@ def myf_plot_r_C_R(sys_param,x_axis_variables,r_C_R,r_P_R,r_P_D,x_axis_variables
     
     axes.grid()
 
-    if(x_axis_variables =="P_S_dB_cand"):
+    if(x_axis_variables_label =="P_S_dB_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Source transmit power $P_S_dBm$')
 
-    elif(x_axis_variables == "P_D_bar_dBm_cand"):
+    elif(x_axis_variables_label == "P_D_bar_dBm_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Destinations transmit power $P_S_dBm$')
 
-    elif(x_axis_variables == "r_P_bar_cand"):
+    elif(x_axis_variables_label == "r_P_bar_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Minimum quality of services for public message')
 
-    elif(x_axis_variables == "res_SI_dB_cand"):
+    elif(x_axis_variables_label == "res_SI_dB_cand"):
         axes.legend(loc="best")
         axes.set_xlabel(r'residual self-interference')
 
-    elif(x_axis_variables == "err_min_cand"):
+    elif(x_axis_variables_label == "err_min_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Minimum DEP Threshold')
 
-    elif(x_axis_variables == "No_W_unc_dB_cand"):
+    elif(x_axis_variables_label == "No_W_unc_dB_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Noise uncertainity bound')
 
@@ -134,27 +135,27 @@ def myf_plot_Solutions_P_D(sys_param,x_axis_variables,Solutions_P_D, x_axis_vari
     
     axes.grid()
 
-    if(x_axis_variables =="P_S_dB_cand"):
+    if(x_axis_variables_label =="P_S_dB_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Source transmit power $P_S_dBm$')
 
-    elif(x_axis_variables == "P_D_bar_dBm_cand"):
+    elif(x_axis_variables_label == "P_D_bar_dBm_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Destinations transmit power $P_S_dBm$')
 
-    elif(x_axis_variables == "r_P_bar_cand"):
+    elif(x_axis_variables_label == "r_P_bar_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Minimum quality of services for public message')
 
-    elif(x_axis_variables == "res_SI_dB_cand"):
+    elif(x_axis_variables_label == "res_SI_dB_cand"):
         axes.legend(loc="best")
         axes.set_xlabel(r'residual self-interference')
 
-    elif(x_axis_variables == "err_min_cand"):
+    elif(x_axis_variables_label == "err_min_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Minimum DEP Threshold')
 
-    elif(x_axis_variables == "No_W_unc_dB_cand"):
+    elif(x_axis_variables_label == "No_W_unc_dB_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Noise uncertainity bound')
 
@@ -185,27 +186,27 @@ def myf_plot_DEP(sys_param,x_axis_variables,DEP, x_axis_variables_label):
     
     axes.grid()
 
-    if(x_axis_variables =="P_S_dB_cand"):
+    if(x_axis_variables_label =="P_S_dB_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Source transmit power $P_S_dBm$')
 
-    elif(x_axis_variables == "P_D_bar_dBm_cand"):
+    elif(x_axis_variables_label == "P_D_bar_dBm_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Destinations transmit power $P_S_dBm$')
 
-    elif(x_axis_variables == "r_P_bar_cand"):
+    elif(x_axis_variables_label == "r_P_bar_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Minimum quality of services for public message')
 
-    elif(x_axis_variables == "res_SI_dB_cand"):
+    elif(x_axis_variables_label == "res_SI_dB_cand"):
         axes.legend(loc="best")
         axes.set_xlabel(r'residual self-interference')
 
-    elif(x_axis_variables == "err_min_cand"):
+    elif(x_axis_variables_label == "err_min_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Minimum DEP Threshold')
 
-    elif(x_axis_variables == "No_W_unc_dB_cand"):
+    elif(x_axis_variables_label == "No_W_unc_dB_cand"):
         axes.legend(loc="best")
         axes.set_xlabel('Noise uncertainity bound')
 

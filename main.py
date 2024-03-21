@@ -3,6 +3,10 @@ import matplotlib.pyplot as plt
 
 N = 20000
 
+seed_seq = np.random.randint(0, N)
+
+rng = np.random.default_rng(seed=seed_seq)
+
 ip = np.random.rand(N) > 0.5
 
 ip = ip.astype(int)
@@ -110,7 +114,7 @@ def ber_svd():
 
         for ii in range(N // 2):
 
-            H = np.sqrt(1 / (2)) * (np.random.randn(nRx, nTx) + 1j * np.random.randn(nRx, nTx))
+            H = rng.normal(loc=0, scale=np.sqrt(1/2), size=(nTx, nRx)) + 1j * rng.normal(loc=0, scale=np.sqrt(1/2), size=(nTx, nRx))
 
             H_hermitian = np.conjugate(H)
 

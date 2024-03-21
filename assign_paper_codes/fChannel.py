@@ -28,11 +28,12 @@ def myf_locations(sys_param,param_locations):
 
     locations["angle_OR"] = (1/2)*np.pi
 
-    locations["angle_OW"] = (1/2) * np.pi
+    locations["angle_OW"] = (3/2) * np.pi
 
     locations["positions_S"] = np.multiply(np.vstack((locations["d_OS"], locations["d_OS"])), \
                                        np.vstack((np.cos(locations["angle_OS"]), \
                                                   np.sin(locations["angle_OS"]))))
+    
     locations["positions_D"] = np.multiply(np.vstack((locations["d_OD"], locations["d_OD"])), \
                                        np.vstack((np.cos(locations["angle_OD"]), \
                                                   np.sin(locations["angle_OD"]))))
@@ -64,19 +65,29 @@ def myf_channel(sys_param, locations, param_channel):
 
     seed_seq = param_channel["seed_seq"]
 
+
     rng = np.random.default_rng(seed=seed_seq)
 
     channel = {}
 
-    PL_SD = 10**(-3) * np.sqrt(np.sum(np.power(positions_D[:,0]-positions_S[:,0],2),0))**(-PL_exp)
+    PL_SD = 10**(-3) * np.sqrt(np.sum(np.power(positions_D[:,0]-positions_S[:,0], 2))**(-PL_exp))
 
-    PL_SR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_S[:,0],2),0))**(-PL_exp)
+    # PL_SD = 10**(-3) * np.sqrt(np.sum(np.power(positions_D[:,0]-positions_S[:,0],2),0))**(-PL_exp)
+    PL_SR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_S[:,0], 2)))**(-PL_exp)
 
-    PL_SW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_S[:,0],2),0))**(-PL_exp)
+    # PL_SR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_S[:,0],2),0))**(-PL_exp)
 
-    PL_DR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_D[:,0],2),0))**(-PL_exp)
+    # PL_SW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_S[:,0],2),0))**(-PL_exp)
+    PL_SW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_S[:,0],2)))**(-PL_exp)
 
-    PL_DW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_D[:,0],2),0))**(-PL_exp)
+    # PL_DR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_D[:,0],2),0))**(-PL_exp)
+
+    PL_DR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_D[:,0], 2)))**(-PL_exp)
+
+    # PL_DW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_D[:,0],2),0))**(-PL_exp)
+
+    PL_DW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_D[:,0], 2)))**(-PL_exp)
+
 
     PL_DD = res_SI
 
