@@ -32,7 +32,7 @@ def myf_sys_param():
 
     sys_param["No_W_unc_dB"] = 5
 
-    sys_param["No_W_unc"] = 10**(sys_param["No_W_unc_dB"] / 10)/(10**3)
+    sys_param["No_W_unc"] = 10**(sys_param["No_W_unc_dB"] / 10)
 
     sys_param["No_D_dBm"] = -160
 
