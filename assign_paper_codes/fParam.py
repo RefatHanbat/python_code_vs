@@ -26,9 +26,9 @@ def myf_sys_param():
 
     sys_param["r_P_bar"] = 0.1
 
-    sys_param["No_W_dBm"] = -160
+    sys_param["No_W_dBm"] = -160 #[dBm/Hz]
 
-    sys_param["No_W"] = 10**(sys_param["No_W_dBm"] / 10)/(10**3) * sys_param["BW"]
+    sys_param["No_W"] = 10**(sys_param["No_W_dBm"] / 10)/(10**3) * sys_param["BW"] #[Watt]
 
     sys_param["No_W_unc_dB"] = 5
 

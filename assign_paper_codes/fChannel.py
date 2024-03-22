@@ -70,23 +70,25 @@ def myf_channel(sys_param, locations, param_channel):
 
     channel = {}
 
-    PL_SD = 10**(-3) * np.sqrt(np.sum(np.power(positions_D[:,0]-positions_S[:,0], 2))**(-PL_exp))
+    # PL_SD = 10**(-3) * np.sqrt(np.sum(np.power(positions_D[:,0]-positions_S[:,0], 2))**(-PL_exp))
 
-    # PL_SD = 10**(-3) * np.sqrt(np.sum(np.power(positions_D[:,0]-positions_S[:,0],2),0))**(-PL_exp)
-    PL_SR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_S[:,0], 2)))**(-PL_exp)
+    PL_SD = 10**(-3) * np.sqrt(np.sum(np.power(positions_D[:,0]-positions_S[:,0],2),0))**(-PL_exp)
 
-    # PL_SR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_S[:,0],2),0))**(-PL_exp)
+    # PL_SR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_S[:,0], 2)))**(-PL_exp)
 
-    # PL_SW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_S[:,0],2),0))**(-PL_exp)
-    PL_SW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_S[:,0],2)))**(-PL_exp)
+    PL_SR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_S[:,0],2),0))**(-PL_exp)
 
-    # PL_DR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_D[:,0],2),0))**(-PL_exp)
+    PL_SW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_S[:,0],2),0))**(-PL_exp)
 
-    PL_DR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_D[:,0], 2)))**(-PL_exp)
+    # PL_SW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_S[:,0],2)))**(-PL_exp)
 
-    # PL_DW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_D[:,0],2),0))**(-PL_exp)
+    PL_DR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_D[:,0],2),0))**(-PL_exp)
 
-    PL_DW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_D[:,0], 2)))**(-PL_exp)
+    # PL_DR = 10**(-3) * np.sqrt(np.sum(np.power(positions_R[:,0]-positions_D[:,0], 2)))**(-PL_exp)
+
+    PL_DW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_D[:,0],2),0))**(-PL_exp)
+
+    # PL_DW = 10**(-3) * np.sqrt(np.sum(np.power(positions_W[:,0]-positions_D[:,0], 2)))**(-PL_exp)
 
 
     PL_DD = res_SI

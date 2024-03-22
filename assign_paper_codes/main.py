@@ -126,9 +126,13 @@ for ind1 in range(0,Num_samples):
 
             sys_param["No_W_unc"] = 10 **(sys_param["No_W_unc_dB"]/10)
 
-        solutions_algorithm_1 = myf_algorihtm_1(sys_param,channel)  
+        solutions_algorithm_1 = myf_algorihtm_1(sys_param,channel) 
+
+        
 
         r_C_R_temp[0,ind2] = myf_r_C_R(sys_param,channel,solutions_algorithm_1)
+
+        
 
         r_P_R_temp[0,ind2] = myf_r_P_R(sys_param,channel,solutions_algorithm_1)
 
@@ -140,90 +144,90 @@ for ind1 in range(0,Num_samples):
 
         
 
-#         solutions_algorithm_2 = myf_algorithm_2(sys_param,channel,0.05)
+        solutions_algorithm_2 = myf_algorithm_2(sys_param,channel,0.05)
 
         
 
-#         r_C_R_temp[1,ind2] = myf_r_C_R(sys_param,channel,solutions_algorithm_2)
+        r_C_R_temp[1,ind2] = myf_r_C_R(sys_param,channel,solutions_algorithm_2)
 
-#         r_P_R_temp[1,ind2] = myf_r_P_R(sys_param,channel,solutions_algorithm_2)
+        r_P_R_temp[1,ind2] = myf_r_P_R(sys_param,channel,solutions_algorithm_2)
 
-#         r_P_D_temp[1,ind2] = myf_r_P_D(sys_param,channel,solutions_algorithm_2)
+        r_P_D_temp[1,ind2] = myf_r_P_D(sys_param,channel,solutions_algorithm_2)
 
-#         DEP_temp[1,ind2] = myf_DEP(sys_param,channel,solutions_algorithm_2)
+        DEP_temp[1,ind2] = myf_DEP(sys_param,channel,solutions_algorithm_2)
 
-#         Solutions_P_D_temp[1,ind2] = solutions_algorithm_2["P_D"]
+        Solutions_P_D_temp[1,ind2] = solutions_algorithm_2["P_D"]
 
-#         solutions_algorithm_3 = myf_algorithm_2(sys_param,channel,0.01)
+        solutions_algorithm_3 = myf_algorithm_2(sys_param,channel,0.01)
 
-#         r_C_R_temp[2,ind2] = myf_r_C_R(sys_param,channel,solutions_algorithm_3)
+        r_C_R_temp[2,ind2] = myf_r_C_R(sys_param,channel,solutions_algorithm_3)
 
-#         r_P_R_temp[2,ind2] = myf_r_P_R(sys_param,channel,solutions_algorithm_3)
+        r_P_R_temp[2,ind2] = myf_r_P_R(sys_param,channel,solutions_algorithm_3)
 
-#         r_P_D_temp[2,ind2] = myf_r_P_D(sys_param,channel,solutions_algorithm_3)
+        r_P_D_temp[2,ind2] = myf_r_P_D(sys_param,channel,solutions_algorithm_3)
 
-#         Solutions_P_D_temp[2,ind2] = solutions_algorithm_3["P_D"]
+        Solutions_P_D_temp[2,ind2] = solutions_algorithm_3["P_D"]
 
-#         solutions_algorithm_4 = myf_algorithm_2(sys_param,channel,0.001)
+        solutions_algorithm_4 = myf_algorithm_2(sys_param,channel,0.001)
 
-#         r_C_R_temp[3,ind2] = myf_r_C_R(sys_param,channel,solutions_algorithm_4)
+        r_C_R_temp[3,ind2] = myf_r_C_R(sys_param,channel,solutions_algorithm_4)
 
-#         r_P_R_temp[3,ind2] = myf_r_P_R(sys_param,channel,solutions_algorithm_4)
+        r_P_R_temp[3,ind2] = myf_r_P_R(sys_param,channel,solutions_algorithm_4)
 
-#         r_P_D_temp[3,ind2] = myf_r_P_D(sys_param,channel,solutions_algorithm_4)
+        r_P_D_temp[3,ind2] = myf_r_P_D(sys_param,channel,solutions_algorithm_4)
 
-#         DEP_temp[3,ind2] = myf_DEP(sys_param,channel,solutions_algorithm_4)
+        DEP_temp[3,ind2] = myf_DEP(sys_param,channel,solutions_algorithm_4)
 
-#         Solutions_P_D_temp[3,ind2] = solutions_algorithm_4["P_D"]
+        Solutions_P_D_temp[3,ind2] = solutions_algorithm_4["P_D"]
 
-#         solutions_algorithm_5 = myf_algorithm_2(sys_param,channel,np.random.rand())
+        solutions_algorithm_5 = myf_algorithm_2(sys_param,channel,np.random.rand())
 
-#         r_C_R_temp[4,ind2] = myf_r_C_R(sys_param,channel,solutions_algorithm_5)
+        r_C_R_temp[4,ind2] = myf_r_C_R(sys_param,channel,solutions_algorithm_5)
 
-#         r_P_R_temp[4,ind2] = myf_r_P_R(sys_param,channel,solutions_algorithm_5)
+        r_P_R_temp[4,ind2] = myf_r_P_R(sys_param,channel,solutions_algorithm_5)
 
-#         r_P_D_temp[4,ind2] = myf_r_P_D(sys_param,channel,solutions_algorithm_5)
+        r_P_D_temp[4,ind2] = myf_r_P_D(sys_param,channel,solutions_algorithm_5)
 
-#         Solutions_P_D_temp[4,ind2] = solutions_algorithm_5["P_D"]
+        Solutions_P_D_temp[4,ind2] = solutions_algorithm_5["P_D"]
 
-#         progress = (ind1 * np.size(x_axis_cand,axis = 0) + ind2)\
-#                     /(Num_samples * np.size(x_axis_cand,axis=0))*100
-#         if(np.floor(progress/10) > progress_per):
+        progress = (ind1 * np.size(x_axis_cand,axis = 0) + ind2)\
+                    /(Num_samples * np.size(x_axis_cand,axis=0))*100
+        if(np.floor(progress/10) > progress_per):
 
-#             progress_per = progress_per + 1
+            progress_per = progress_per + 1
 
-#             print("progress: ", progress)
+            print("progress: ", progress)
 
-#             print("....%d %% Done"%(progress_per*10))
+            print("....%d %% Done"%(progress_per*10))
 
-#         ##average
+        ##average
         
         r_C_R = (ind1 + 1 - 1) / (ind1 + 1)*r_C_R + 1/(ind1 + 1) * r_C_R_temp
 
-#         r_P_R = (ind1 + 1 - 1) / (ind1 + 1)*r_P_R + 1/(ind1 + 1) * r_P_R_temp
+        r_P_R = (ind1 + 1 - 1) / (ind1 + 1)*r_P_R + 1/(ind1 + 1) * r_P_R_temp
 
-#         r_P_D = (ind1 + 1 - 1) / (ind1 + 1)*r_P_D + 1/(ind1 + 1) * r_P_D_temp
+        r_P_D = (ind1 + 1 - 1) / (ind1 + 1)*r_P_D + 1/(ind1 + 1) * r_P_D_temp
 
-#         DEP = (ind1 + 1 - 1) / (ind1 + 1)*DEP + 1/(ind1 + 1) * DEP_temp
+        DEP = (ind1 + 1 - 1) / (ind1 + 1)*DEP + 1/(ind1 + 1) * DEP_temp
 
-#         Solutions_P_D = (ind1 + 1 - 1) / (ind1 + 1)*Solutions_P_D + 1/(ind1 + 1) * Solutions_P_D_temp
+        Solutions_P_D = (ind1 + 1 - 1) / (ind1 + 1)*Solutions_P_D + 1/(ind1 + 1) * Solutions_P_D_temp
 
 print("r_C_R(alogrithm 1):", r_C_R[0,:])
 
-# print("Solutions_P_D(algorihtm 1): ", Solutions_P_D[0,:])
+print("Solutions_P_D(algorihtm 1): ", Solutions_P_D[0,:])
 
-# print("r_C_R(alogrithm 2):", r_C_R[1,:])
+print("r_C_R(alogrithm 2):", r_C_R[1,:])
 
-# print("r_C_R(alogrithm 3):", r_C_R[2,:])
+print("r_C_R(alogrithm 3):", r_C_R[2,:])
 
-# print("r_C_R(alogrithm 4):", r_C_R[3,:])
+print("r_C_R(alogrithm 4):", r_C_R[3,:])
 
-# print("r_C_R(alogrithm 5):", r_C_R[4,:])
+print("r_C_R(alogrithm 5):", r_C_R[4,:])
 
-# myf_plot_r_C_R(sys_param,x_axis_cand,r_C_R,r_P_R,r_P_D,x_axis_name)
+myf_plot_r_C_R(sys_param,x_axis_cand,r_C_R,r_P_R,r_P_D,x_axis_name)
 
-# myf_plot_Solutions_P_D(sys_param,x_axis_cand,Solutions_P_D,x_axis_name)
+myf_plot_Solutions_P_D(sys_param,x_axis_cand,Solutions_P_D,x_axis_name)
 
-# myf_plot_DEP(sys_param,x_axis_cand,DEP,x_axis_name)
+myf_plot_DEP(sys_param,x_axis_cand,DEP,x_axis_name)
 
-# print("Finished")
+print("Finished")
