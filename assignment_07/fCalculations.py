@@ -52,7 +52,7 @@ def myf_constellation(sys_param):
 def myf_symbol_indices(sys_param, param_symbol_indices):
 
     Ns = sys_param["Ns"]
-
+    
     constellation_size = sys_param["constellation_size"]
 
     seed_seq = param_symbol_indices["seed_seq"]
@@ -82,7 +82,7 @@ def myf_x_vec(sys_param, constellation,symbol_indices):
 
 
     for ind in range(0,Ns):
-        
+
         x_vec[ind][0] = constellation_symbols[symbol_indices[ind]][0]
 
         
@@ -211,7 +211,7 @@ def myf_C_Pandw(sys_param, channel, P_mat, Ns_opt, solutions):
 
     Nr = sys_param["Nr"]
 
-    NO = sys_param["NO"]\
+    NO = sys_param["NO"]
     
     H_mat = channel["H_mat"]
 
@@ -298,8 +298,6 @@ def myf_Num_errors(sys_param, constellation, solutions, param_Num_errors):
         if(symbol_indices[ind] != symbol_indices_dec[ind]):
 
             Num_errors_symbol = Num_errors_symbol + 1
-
-            Num_errors_bit = Num_errors_bit + 1
 
             Num_errors_bit = Num_errors_bit + np.sum(np.abs(constellation_bits[int(symbol_indices[ind])]\
                             - constellation_bits[int(symbol_indices_dec[ind])]))

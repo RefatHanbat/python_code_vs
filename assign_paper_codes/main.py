@@ -13,11 +13,11 @@ from fPlot import *
 
 sys_param = myf_sys_param()
 
-Num_samples = 10000
+Num_samples = 1000
 
 x_axis_name = "No_W_unc_dB_cand" 
 
-# x_axis_name = "P_S_dBm_cand"
+x_axis_name = "P_S_dBm_cand"
 
 if(x_axis_name == "P_S_dBm_cand"):
     x_axis_cand = np.arange(start=0 , stop=55, step=5)
@@ -128,7 +128,7 @@ for ind1 in range(0,Num_samples):
 
         solutions_algorithm_1 = myf_algorihtm_1(sys_param,channel) 
 
-        
+        print(solutions_algorithm_1)
 
         r_C_R_temp[0,ind2] = myf_r_C_R(sys_param,channel,solutions_algorithm_1)
 

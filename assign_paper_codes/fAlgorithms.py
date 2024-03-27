@@ -58,12 +58,25 @@ def myf_algorihtm_1(sys_param, channel):
         #         1 / No_W_unc) * No_W) / (np.abs(h_DW)**2),\
         #                                 P_D_bar
         #                                           ])
-        P_D_ub = np.array([
-              (((np.abs(h_SR)**2 * P_S) / (2**(r_P_bar) - 1) - No_R) * (np.abs(h_DR)**2)),
-          (((np.abs(h_SD)**2 * P_S) / (2**(r_P_bar) - 1) - No_D) / (np.abs(h_DD_tilde)**2)),
-                 ((No_W_unc**(1 - 4 *err_min)-1/No_W_unc)*No_W)/(np.abs(h_DW)**2),
-                                                                                  P_D_bar
-                          ])
+        h_SR_sq_mgn = np.abs(h_SR)**2
+
+        h_DR_sq_mgn = np.abs(h_DR)**2 
+
+        h_SD_sq_mgn = np.abs(h_SD)**2
+
+        h_DD_tilde_sq_mgn = np.abs(h_DD_tilde)
+
+        h_DW_sq_mgn = np.abs(h_DW)**2
+
+        denominator = (2**r_P_bar - 1)
+
+        first_portion = (1/h_DR_sq_mgn) * ((h_SR_sq_mgn * P_S/denominator) - No_R)
+
+        second_portion = (1/h_DD_tilde_sq_mgn) * ((h_SD_sq_mgn * P_S / denominator) - No_D)
+
+        third_portion = (No_W_unc **( 1 - 4 * err_min) - 1/No_W_unc) * (No_W / h_DW_sq_mgn )
+
+        P_D_ub = np.array([first_portion,second_portion,third_portion,P_D_bar])
     
     P_D_opt = max(0,np.amin(P_D_ub))
     

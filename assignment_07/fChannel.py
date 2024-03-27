@@ -19,7 +19,7 @@ def myf_channel(sys_param, param_channel):
 
     rng = np.random.default_rng(seed = seed_seq)
 
-
+    
     channel = {}
 
     #Large-scale pathloss

@@ -14,7 +14,8 @@ from fPlot import*
 
 sys_param = myf_sys_param()
 
-Num_samples = 10000
+
+Num_samples = 1000
 
 x_axis_name = "EsoverNO_dB_cand"
 
@@ -32,7 +33,6 @@ Num_algorihtms = 7
 ###constellation symbols and bits (Unit average symbol energy)
 
 constellation = myf_constellation(sys_param)
-
 
 Num_errors_symbol = np.zeros((Num_algorihtms, np.size(x_axis_cand, axis=0)))
 
@@ -280,7 +280,7 @@ for ind1 in range(0,Num_samples):
         Num_symbols_eff_temp[6][ind2] = Ns_opt
 
         Num_bits_eff_temp[6][ind2] = Ns_opt * np.log2(sys_param["constellation_size"])
-
+    
         ##progress##
 
         progress = (ind1*np.size(x_axis_cand, axis=0) + ind2)\
@@ -294,7 +294,7 @@ for ind1 in range(0,Num_samples):
 
             print("...%d %%Done..."%(progress_per*10))
     ##Accumulation
-            
+         
     Num_errors_symbol = Num_errors_symbol + Num_errors_symbol_temp
 
     Num_errors_bit = Num_errors_bit + Num_errors_bit_temp

@@ -18,13 +18,13 @@ def myf_sys_param():
 
     sys_param["NO"] = sys_param["Es"]/(sys_param["EsoverNO"])
 
-    sys_param["constellation_type"] = "BPSK"
+    sys_param["constellation_type"] = "QPSK"
 
     if(sys_param["constellation_type"] == "BPSK"):
 
         sys_param["constellation_size"] =2
 
-    elif(sys_param["constellation_size"] == "QPSK"):
+    elif(sys_param["constellation_type"] == "QPSK"):
 
         sys_param["constellation_size"] = 4
 
